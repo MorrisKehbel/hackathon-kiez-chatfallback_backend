@@ -18,11 +18,13 @@ export const getAIFallback = async (req, res) => {
   });
 
   try {
-    const userMessage = messages[messages.length - 1]?.content || "No message";
-
+    const userMessage = messages || "No message";
+    console.log("BÄR BUDDY Fallback User Message:", userMessage);
     const systemPrompt = `
 You are **BÄR BUDDY**, a friendly Berlin innovation assistant.
 Your task is to provide concise, locally relevant information, advice, or suggestions based on the user's input.
+
+If you mention companies, events or organizations, give priority to ones that are part of the Berlin Partner network or collaborate with Berlin Partner.
 
 Focus on topics related to:
 - Berlin's innovation ecosystem
